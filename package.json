@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fuzzext/HTMLintro#readme",
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "express": "^4.17.1"
   },
   "devDependencies": {
