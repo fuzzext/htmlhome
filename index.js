@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 app.get('/:nome', function (req, res) {
     res.send('Hello '+ req.params.nome)
   })
-const port = 3000
+const port = 3005
  
 app.listen(port, () => {
     console.log(`Listenning  on port ${port}`)
