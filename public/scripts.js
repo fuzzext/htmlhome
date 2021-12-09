@@ -3,6 +3,7 @@ function initForm(){
     getNavbar()
     getTipos()
 }
+//-----------------------------------------//
 function getTipos(){
     const tipos = document.getElementById('tipo')
     fetch('http://localhost:3005/tipos')
@@ -20,15 +21,56 @@ function getTipos(){
         alert('Erro no pedido...')
     })
 }
-/*const connection = mysql.createConnection({
-    host:process.env._HOST,
-    user:process.env._USERNAME,
-    password:process.env._PASSWORD,
-    database: process.env._DATABASE,
-    port:process.env._PORT
-})
-*/
+//-----------------------------------------//
+function adicionar(){
+    let nome = document.getElementById('nome').value
+    console.log(nome)
+    let morada_rua = document.getElementById('morada_rua').value
+    console.log(morada_rua)
+    let morada_num = document.getElementById('morada_num').value
+    console.log(morada_num)
+    let dnasc = document.getElementById('dnasc').value
+    console.log(dnasc)
+    let telem = document.getElementById('telem').value
+    console.log(telem)
+    let email = document.getElementById('email').value
+    console.log(email)
+    let tipo = document.getElementById('tipo').value
+    console.log(tipo)
 
+    //criar um objeto com os valores:
+    let objeto = {
+        //nome na db : nome da variavel
+        nomeutilizador: nome,
+        moradarua: morada_rua,
+        moradanumero: morada_num,
+        datanascimento: dnasc,
+        telemovel: telem,
+        email: email,
+        idtipo: tipo
+
+    }
+    //transformar o objeto em JSON
+    let objetoJSON = JSON.stringify(objeto)
+    //preparar as opções do pedido
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: objetoJSON
+    }
+    //fazer fetch com as opções acima definidas
+    fetch('http://localhost:3005/inserirutilizador', options)
+    .then(res => res.text())
+    .then(text => {
+        alert(text)
+    })
+    .catch((err)=>{
+        alert('Ocorreu um erro no pedido...')
+    })
+}
+//-----------------------------------------//
 function getNavbar(){
     const nbar = document.getElementById('nbar')
     fetch('http://localhost:3005/navbar.html')
@@ -42,22 +84,19 @@ function getNavbar(){
 }
 
 
+//-----------------------------------------//
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*const connection = mysql.createConnection({
+    host:process.env._HOST,
+    user:process.env._USERNAME,
+    password:process.env._PASSWORD,
+    database: process.env._DATABASE,
+    port:process.env._PORT
+})
+*/
 /*
 function getData(){
 fetch('http://localhost:3002/bd')

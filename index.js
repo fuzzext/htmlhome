@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const mysql = require('mysql2')
 require('dotenv').config({ path: 'private/.env'})
+const connection = require('./dbconnection')
 const app = express()
 
 
@@ -31,7 +32,12 @@ app.get('/tipos', (req,res) => {
   })
 })
 
+app.post('/inserirutilizador', (req,res)=>{
+  console.log(req.body)
+  res.send('Cheguei bem e de saúde!')
+})
   
+
 const port = 3005
  
 app.listen(port, () => {
