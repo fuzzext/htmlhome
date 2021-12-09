@@ -1,3 +1,34 @@
+
+function initForm(){
+    getNavbar()
+    getTipos()
+}
+function getTipos(){
+    const tipos = document.getElementById('tipo')
+    fetch('http://localhost:3005/tipos')
+    .then(res => res.json())
+    .then(data => {
+        tipos.innerHTML+=
+        `<option selected>Escolha um tipo de utilizador...</option>`
+        for(i in data){
+            let op =
+            `<option value="${data[i].idtipo}">${data[i].designacao}</option>`
+            tipos.innerHTML += op
+        }
+    })
+    .catch((err)=>{
+        alert('Erro no pedido...')
+    })
+}
+/*const connection = mysql.createConnection({
+    host:process.env._HOST,
+    user:process.env._USERNAME,
+    password:process.env._PASSWORD,
+    database: process.env._DATABASE,
+    port:process.env._PORT
+})
+*/
+
 function getNavbar(){
     const nbar = document.getElementById('nbar')
     fetch('http://localhost:3005/navbar.html')
@@ -9,22 +40,6 @@ function getNavbar(){
         alert('Ocorreu um problema...')
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

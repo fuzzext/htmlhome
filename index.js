@@ -1,6 +1,11 @@
 const express = require('express')
+const path = require('path')
+const mysql = require('mysql2')
+require('dotenv').config({ path: 'private/.env'})
 const app = express()
- 
+
+
+
 app.use(express.static('./public'))
 
 app.use(express.static('./public'))
@@ -15,7 +20,16 @@ app.get('/navbar',(req,res)=>{
 })
 
 
-
+app.get('/tipos', (req,res) => {
+  
+  connection.query('SELECT * FROM tipos', (err,result)=>{
+    if(err)
+    res.json('Ocurreu um problema na base de dados...')
+    else {
+      res.json(result)
+    }
+  })
+})
 
   
 const port = 3005
