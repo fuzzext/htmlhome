@@ -61,7 +61,7 @@ function adicionar(){
         body: objetoJSON
     }
     //fazer fetch com as opções acima definidas
-    fetch('http://localhost:3005/inserirutilizador', options)
+    fetch('http://localhost:3005/utilizador', options)
     .then(res => res.text())
     .then(text => {
         alert(text)

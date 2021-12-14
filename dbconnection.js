@@ -13,7 +13,7 @@ connection.connect((err)=>{
         throw err;
     }
     else {
-        console.log('connected to database ' + process.env._DATABASE)
+        console.log('Connected to database ' + process.env._DATABASE)
     }
 })
 
